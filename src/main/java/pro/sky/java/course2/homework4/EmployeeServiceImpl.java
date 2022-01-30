@@ -7,7 +7,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final Employee[] employeeList = new Employee[10];
 
 
-    public Employee addEmployee(String firstName, String lastName) {
+    public Employee addEmployee(String firstName, String lastName) throws FullArrayException {
         Employee workaholic = new Employee(firstName, lastName);
         for (int i = 0; i < employeeList.length; i++) {
             if (employeeList[i] == null) {
@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return workaholic;
             }
         }
-        throw new FullArrayException.ArrayIsFullException();
+        throw new FullArrayException();
     }
 
 
@@ -30,11 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return workaholic;
             }
         }
-        throw new EmployeeNotFoundException.NotFoundEmployeeException();
+        throw new EmployeeNotFoundException();
     }
 
 
-    public Employee findEmployee(String firstName, String lastName) {
+    public Employee findEmployee(String firstName, String lastName) throws EmployeeNotFoundException {
         Employee workaholic = new Employee(firstName, lastName);
         for (int i = 0; i < employeeList.length; i++) {
             if (employeeList[i] == null) {
@@ -44,6 +44,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return employeeList[i];
             }
         }
-        throw new EmployeeNotFoundException.NotFoundEmployeeException();
+        throw new EmployeeNotFoundException();
     }
 }
