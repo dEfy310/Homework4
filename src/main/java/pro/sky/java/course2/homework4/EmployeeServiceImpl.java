@@ -7,7 +7,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final Employee[] employeeList = new Employee[10];
 
 
-    public Employee addEmployee(String firstName, String lastName) throws FullArrayException {
+    public Employee addEmployee(String firstName, String lastName) {
         Employee workaholic = new Employee(firstName, lastName);
         for (int i = 0; i < employeeList.length; i++) {
             if (employeeList[i] == null) {
@@ -34,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
-    public Employee findEmployee(String firstName, String lastName) throws EmployeeNotFoundException {
+    public Employee findEmployee(String firstName, String lastName) {
         Employee workaholic = new Employee(firstName, lastName);
         for (int i = 0; i < employeeList.length; i++) {
             if (employeeList[i] == null) {
